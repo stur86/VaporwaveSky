@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv1o5sofksyw0"]
+
+[ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="1_7cc4v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mu8m"]
+shader = ExtResource("1_7cc4v")
+shader_parameter/sky_color = Color(0.1, 0.07, 0.2, 1)
+shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_angle_span = 10.0
+shader_parameter/sun_smoothing = 0.35
+
+[sub_resource type="Sky" id="Sky_ehl48"]
+sky_material = SubResource("ShaderMaterial_8mu8m")
+
+[sub_resource type="Environment" id="Environment_d7124"]
+background_mode = 2
+sky = SubResource("Sky_ehl48")
+
+[node name="TestScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 4.57535e-09, -8.7303e-08, 0, 0.99863, 0.052336, 8.74228e-08, 0.052336, -0.99863, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d7124")

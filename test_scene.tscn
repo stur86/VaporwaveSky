@@ -5,13 +5,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mu8m"]
 shader = ExtResource("1_7cc4v")
 shader_parameter/sky_color = Color(0.1, 0.07, 0.2, 1)
-shader_parameter/use_sun_gradient = true
-shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
-shader_parameter/sun_color_2 = Color(0.956863, 0.0705882, 0.882353, 1)
 shader_parameter/sun_angle_span = 10.0
 shader_parameter/sun_smoothing = 0.35
+shader_parameter/sun_gradient = true
+shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_color_2 = Color(0.956863, 0.0705882, 0.882353, 1)
 shader_parameter/sun_gradient_pos_frac = 0.6
 shader_parameter/sun_gradient_span_frac = 0.8
+shader_parameter/sun_banding = true
+shader_parameter/sun_banding_base_gap = 0.03
+shader_parameter/sun_banding_gap_mul = 1.1
+shader_parameter/sun_banding_stop_height = 0.7
+shader_parameter/sun_banding_thickness = 0.01
 
 [sub_resource type="Sky" id="Sky_ehl48"]
 sky_material = SubResource("ShaderMaterial_8mu8m")

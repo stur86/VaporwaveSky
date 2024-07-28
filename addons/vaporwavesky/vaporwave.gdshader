@@ -15,11 +15,12 @@ uniform float ground_horizon_decay: hint_range(0.0, 90.0, 0.1) = 1.0;
 
 group_uniforms Stars;
 uniform bool stars_enabled = true;
-uniform vec2 star_seed = vec2(0.0, 0.0);
+uniform bool stars_below_horizon = false;
 uniform vec3 star_color: source_color = vec3(0.95, 0.9, 0.6);
 uniform float star_radius: hint_range(0.1, 1.0, 0.01) = 0.3;
 uniform float star_density: hint_range(0.5, 100.0, 0.1) = 5.0;
 uniform float star_randomness: hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform vec2 star_seed = vec2(0.0, 0.0);
 
 group_uniforms Grid;
 uniform bool grid_enabled = true;
@@ -76,6 +77,11 @@ vec3 sph_direction(float phi, float theta) {
 
 // Star computation
 float star(vec2 sky_coords, vec3 sky_dir) {
+	
+	if (sky_dir.y < 0.0 && !stars_below_horizon) {
+		return 0.0;
+	}
+	
 	float theta_sectors_N = ceil(star_density*PI/2.0);
 	float theta_sector = ceil(sky_coords.y*theta_sectors_N);
 	float phi_sectors_N = ceil(star_density*TAU*sin(theta_sector/theta_sectors_N*PI/2.0));

@@ -5,10 +5,12 @@ Created on 28-07-2024
 https://github.com/stur86/VaporwaveSky
 */
 
+group_uniforms Sky;
 uniform vec3 sky_color: source_color = vec3(0.1, 0.07, 0.2);
 uniform vec3 sky_horizon_color: source_color = vec3(0.56, 0.18, 0.42);
 uniform float sky_horizon_decay: hint_range(0.0, 90.0, 0.1) = 3.0;
 
+group_uniforms Ground;
 uniform vec3 ground_color: source_color = vec3(0.0, 0.0, 0.0);
 uniform vec3 ground_horizon_color: source_color = vec3(0.1, 0.0, 0.07);
 uniform float ground_horizon_decay: hint_range(0.0, 90.0, 0.1) = 1.0;
